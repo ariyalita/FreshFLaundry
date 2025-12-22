@@ -1,272 +1,572 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fresh Fold Laundry - Form Pemesanan & Layanan</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-    /* --- CSS Global & Tata Letak --- */
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Poppins', sans-serif;
-        background: #f0f4f8; 
-        color: #333;
-    }
-
-    /* --- HEADER (Navigasi Putih - Teks Biru) --- */
-    header {
-        background: white; 
-        color: #333;
-        padding: 15px 5%;
-        display: flex;
-        justify-content: space-between; 
-        align-items: center;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
-
-    .logo-container {
-        display: flex;
-        align-items: center;
-        font-size: 22px;
-        font-weight: 700;
-        color: #0d47a1; 
-    }
-
-    .logo {
-        width: 35px; 
-        height: 35px;
-        margin-right: 10px;
-        border-radius: 50%;
-    }
-
-    .nav-button {
-        padding: 10px 20px;
-        background: #007bff; 
-        color: white;
-        border: none;
-        border-radius: 50px; 
-        font-weight: 600;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background 0.3s;
-    }
-
-    .nav-button:hover {
-        background: #0d47a1; 
-    }
-
-    .container {
-        padding: 50px 5%;
-    }
-
-    .section-title {
-        text-align: center;
-        margin: 50px 0 30px 0;
-        font-size: 32px;
-        font-weight: 700;
-        color: #0d47a1; 
-    }
-    .section-subtitle {
-        text-align: center;
-        color: #555;
-        margin-bottom: 40px;
-        font-size: 16px;
-    }
-
-    .card-grid {
-        display: flex;
-        flex-wrap: wrap; 
-        gap: 30px;
-        justify-content: center;
-        margin-bottom: 50px;
-    }
-
-    .card {
-        background: white; 
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        flex: 1; 
-        min-width: 280px; 
-        text-align: center;
-        transition: transform 0.3s;
-    }
-
-    .card.fitur-1 { background: linear-gradient(135deg, #e3f2fd, #ffffff); } 
-    .card.fitur-2 { background: linear-gradient(135deg, #f3f9ff, #e3f2fd); } 
-    .card.fitur-3 { background: linear-gradient(135deg, #e3f2fd, #ffffff); } 
-
-    .card h3 { font-size: 20px; font-weight: 700; margin-top: 0; color: #007bff; }
-    .card h2 { font-size: 30px; color: #0d47a1; margin: 10px 0; }
-
-    .form-section {
-        background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        max-width: 650px; 
-        margin: 0 auto 50px auto;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshFold Laundry - Laundry Online Cepat & Praktis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    label { font-weight: 600; margin-top: 20px; display: block; font-size: 16px; color: #333; }
-    input, textarea, select { width: 100%; padding: 14px; margin-top: 8px; border-radius: 10px; border: 1px solid #c8d3e6; font-size: 16px; box-sizing: border-box; }
+    <style>
+        /* BASE & RESET */
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f4f7fb;
+            color: #333;
+            line-height: 1.6;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .submit-btn { background: #007bff; color:white; padding:14px; border:none; border-radius:10px; width:100%; margin-top:20px; cursor:pointer; font-size:16px; font-weight:600;}
-    .submit-btn:hover { background: #0d47a1; }
+        /* 1. NAVBAR */
+        nav {
+            background: #fff;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: #1e88e5;
+        }
+        .logo img {
+            height: 35px; /* Ukuran Logo */
+            margin-right: 8px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        nav ul li a {
+            color: #333;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #1e88e5;
+        }
+        .nav-btn {
+            background: #2ecc71;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .nav-btn:hover {
+            background: #27ae60;
+        }
 
-    footer { background: #0d47a1; color: white; text-align:center; padding:15px; margin-top:40px;}
+        /* 2. HERO SECTION (TAMPILAN GAMBAR + TEKS KIRI) */
+        .hero {
+            background: linear-gradient(120deg, #1e88e5, #42a5f5);
+            color: #fff;
+            padding: 70px 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            height: 480px; 
+        }
+        
+        .hero-content {
+            max-width: 50%; 
+            z-index: 2;
+            padding-left: 20px; 
+            text-align: left; 
+        }
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .hero-img {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 65%; 
+            overflow: hidden;
+            z-index: 1;
+        }
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right center; 
+        }
+        .hero-usp {
+            display: flex;
+            gap: 25px;
+            margin-top: 30px;
+            font-weight: 500;
+        }
+        .hero-usp div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* SECTION BASE */
+        section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .section-title h2 {
+            font-size: 32px;
+            color: #1e88e5;
+            margin-bottom: 5px;
+        }
+        .section-title p {
+            color: #777;
+            margin-bottom: 40px;
+        }
 
-    .whatsapp-float { 
-        position: fixed; bottom: 25px; right: 25px; background-color: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0px 4px 12px rgba(0,0,0,0.3); cursor: pointer; text-decoration: none; animation: bounce 1.6s infinite;
-    }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        /* 3. SERVICES (LAYANAN) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        .service-card img {
+            width: 80px; 
+            margin-bottom: 15px;
+        }
+        .service-card h3 {
+            color: #1e88e5;
+            margin-bottom: 8px;
+        }
+        .service-card p {
+            font-size: 14px;
+            color: #777;
+        }
 
-</style>
+        /* 4. PRICING (HARGA) */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .price-box {
+            padding: 30px 20px;
+            border-radius: 14px;
+            color: #fff;
+        }
+        .price-box h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .price-box h1 {
+            font-size: 40px;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+        .price-box small {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        .price-box p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .box-blue { background: #1e88e5; }
+        .box-green { background: #2ecc71; }
+        .box-orange { background: #f39c12; }
+
+        /* 5. ORDER FORM */
+        .order-form {
+            max-width: 550px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-row > div {
+            flex: 1;
+        }
+        .order-form button {
+            width: 100%;
+            padding: 14px;
+            background: #1e88e5;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .order-form button:hover {
+            background: #1565c0;
+        }
+
+        /* 6. FOOTER */
+        footer {
+            background: #0d47a1;
+            color: #fff;
+            padding: 35px 0 15px 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        .footer-content div {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .footer-content a {
+            color: #fff;
+            transition: color 0.3s;
+        }
+        .footer-content a:hover {
+            color: #42a5f5;
+        }
+        .footer-content i {
+            font-size: 18px;
+        }
+        .copy {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 15px;
+        }
+
+        /* MEDIA QUERIES (Responsif) */
+        @media (max-width: 900px) {
+            .hero {
+                height: auto;
+            }
+            .hero-img {
+                position: static;
+                width: 100%;
+                height: auto;
+                margin-top: 30px;
+            }
+            .hero-img img {
+                max-height: 300px;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+                padding-left: 0;
+            }
+            .hero-usp {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .nav-content {
+                justify-content: space-around;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-content div {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <img src="Logo fresh fold.jpeg" alt="Logo Fresh Fold" class="logo">
-        Fresh Fold Laundry
-    </div>
-    
-    <a href="https://wa.me/6285267268257" target="_blank" class="nav-button">Hubungi Kami</a>
-</header>
+    <nav>
+        <div class="nav-content container">
+            <div class="logo">
+                <img src="fresh fold.png" alt="FreshFold Laundry Logo">
+                FreshFold Laundry
+            </div>
+            <ul>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+                <li><a href="#harga">Harga</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+            <a href="#order" class="nav-btn">Pesan Sekarang</a>
+        </div>
+    </nav>
 
-<div class="container">
-
-<section class="form-section">
-<h1>🧺 Form Pemesanan</h1>
-<p>Layanan laundry bersih, rapi, wangi & bisa antar-jemput 🚚✨</p>
-
-<form id="orderForm">
-<label for="nama">Nama Lengkap</label>
-<input type="text" id="nama">
-
-<label for="telepon">No. Telepon</label>
-<input type="tel" id="telepon">
-
-<label for="alamat">Alamat Pengambilan/Pengiriman</label>
-<textarea id="alamat"></textarea>
-
-<label for="paket">Pilih Paket Layanan</label>
-<select id="paket">
-    <option value="Reguler - Rp 15.000/kg (Estimasi 3 hari)">Reguler - Rp 15.000/kg (3 hari)</option>
-    <option value="Premium + Setrika - Rp 20.000/kg (Estimasi 2 hari)">Premium + Setrika - Rp 20.000/kg (2 hari)</option>
-    <option value="Express - Rp 30.000/kg (Estimasi 1 hari)">Express - Rp 30.000/kg (1 hari)</option>
-</select>
-
-<label for="berat">Estimasi Berat Laundry (kg)</label>
-<input type="number" id="berat" placeholder=>
-
-<button type="button" class="submit-btn" onclick="sendWhatsApp()">Kirim Pesanan Via WhatsApp</button>
-</form>
-
-<br><hr><br>
-
-<h3 style="color:#0d47a1; font-weight:700;">📌 Kontak & Sosial Media</h3>
-<p><b>📞 WhatsApp:</b> <a href="https://wa.me/6285267268257" target="_blank">0852-6726-8257</a></p>
-<p><b>📷 Instagram:</b> <a href="https://instagram.com/freshfold_laundry" target="_blank">@freshfold_laundry</a></p>
-
-<br>
-
-<h3 style="color:#0d47a1; font-weight:700;">💳 Metode Pembayaran</h3>
-
-<p><b>🏦 Transfer Bank:</b></p>
-<ul>
-<li>BRI — <b>5566778899</b> a.n Ariya Lita</li>
-</ul>
-
-<p><b>📲 E-Wallet (QRIS Available):</b></p>
-<ul>
-<li>DANA — 0858-4072-5688</li>
-<li>SHOPEEPAY — 0858-4072-5688</li>
-</ul>
-
-</section>
-
-<h2 class="section-title">✨ Keunggulan Layanan Kami</h2>
-<div class="card-grid">
-    <div class="card fitur-1">
-        <h3>Layanan Cepat & Tepat Waktu</h3>
-        <p>Express 1 hari tersedia!</p>
+    <div class="hero" id="beranda">
+        <div class="container hero-content">
+            <h1>Laundry Online Cepat & Praktis!</h1>
+            <p>Cucian bersih, wangi, dan cepat. Antar Jemput Gratis!</p>
+            <a href="#order" class="nav-btn">Pesan Sekarang</a>
+            
+            <div class="hero-usp">
+                <div><i class="fas fa-truck-moving"></i> Gratis Antar Jemput</div>
+                <div><i class="fas fa-clock"></i> Proses Cepat</div>
+                <div><i class="fas fa-hands-bubbles"></i> Garansi Kebersihan</div>
+            </div>
+        </div>
+        <div class="hero-img">
+             <img src="mesin cuci.png" alt="Mesin Cuci Laundry"> 
+        </div>
     </div>
 
-    <div class="card fitur-2">
-        <h3>Antar-Jemput Gratis</h3>
-        <p>Untuk wilayah tertentu & pelanggan tetap.</p>
-    </div>
+    <section id="layanan">
+        <div class="container">
+            <div class="section-title">
+                <h2>Layanan Kami</h2>
+                <p>Jasa Laundry Terbaik untuk Anda</p>
+            </div>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <img src="laundry kiloan.png" alt="Ikon Laundry Kiloan">
+                    <h3>Laundry Kiloan</h3>
+                    <p>Cuci setrika pakaian harian per kilogram.</p>
+                </div>
+                
+                <div class="service-card">
+                    <img src="laundry satuan.png" alt="Ikon Laundry Satuan">
+                    <h3>Laundry Satuan</h3>
+                    <p>Cuci per item untuk barang spesial (jas, gaun, boneka).</p>
+                </div>
 
-    <div class="card fitur-3">
-        <h3>Bersih & Harum Tahan Lama</h3>
-        <p>Kualitas premium & aman untuk semua jenis kain.</p>
-    </div>
-</div>
+                <div class="service-card">
+                    <img src="laundry satuan.png" alt="Ikon Laundry Ekspres">
+                    <h3>Laundry Ekspres</h3>
+                    <p>Cucian selesai di hari yang sama, cocok untuk darurat.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
 
+    <section id="harga">
+        <div class="container">
+            <div class="section-title">
+                <h2>Paket & Harga</h2>
+                <p>Pilih Paket Laundry Sesuai Kebutuhan Anda</p>
+            </div>
+            <div class="pricing-grid">
+                
+                <div class="price-box box-blue">
+                    <h3>Paket Express</h3>
+                    <h1>Rp 20.000<small>/kg</small></h1>
+                    <p>Cuci & Setrika 6-8 Jam</p>
+                </div>
+                
+                <div class="price-box box-green">
+                    <h3>Paket Reguler</h3>
+                    <h1>Rp 15.000<small>/kg</small></h1>
+                    <p>Cuci & Setrika 2 Hari</p>
+                </div>
 
-<h2 class="section-title">💰 Paket Harga</h2>
-<div class="card-grid">
-    <div class="card"><h3>Reguler</h3><h2>Rp15.000/Kg</h2></div>
-    <div class="card"><h3>Premium</h3><h2>Rp20.000/Kg</h2></div>
-    <div class="card"><h3>Express</h3><h2>Rp30.000/Kg</h2></div>
-</div>
+                <div class="price-box box-orange">
+                    <h3>Paket Satuan</h3>
+                    <h1>Rp 8.000<small>/Potong</small></h1>
+                    <p>Cuci Bersih per item</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
 
-</div>
+    <section id="order">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pesan Sekarang</h2>
+                <p>Order Laundry Anda Sekarang Juga</p>
+            </div>
 
-<footer>© 2025 Fresh Fold Laundry</footer>
+            <form class="order-form" onsubmit="sendWA();return false;">
+                <div class="form-group">
+                    <input id="nama" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="form-group">
+                    <input id="telp" placeholder="Nomor Telepon (mis: 0858xxxx)" type="tel" required>
+                </div>
+                <div class="form-group">
+                    <input id="alamat" placeholder="Alamat Jemput Lengkap" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <select id="layanan" required>
+                            <option value="" disabled selected>Pilih Layanan</option>
+                            <option value="Laundry Kiloan">Laundry Kiloan</option>
+                            <option value="Laundry Satuan">Laundry Satuan</option>
+                            <option value="Laundry Ekspres">Laundry Ekspres</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="paket" required>
+                            <option value="" disabled selected>Pilih Paket</option>
+                            <option value="Paket Express (Rp 20.000/kg)">Paket Express (6-8 Jam)</option>
+                            <option value="Paket Reguler (Rp 15.000/kg)">Paket Reguler (2 Hari)</option>
+                            <option value="Paket Satuan (Rp 8.000/potong)">Paket Satuan (Harga/Potong)</option>
+                        </select>
+                    </div>
+                </div>
 
-<a href="https://wa.me/6285267268257?text=Hallo%20Fresh%20Fold%20Laundry,%20Saya%20ingin%20bertanya🙂" 
-class="whatsapp-float" target="_blank">💬</a>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input id="tanggal" type="date" required>
+                    </div>
+                    <div class="form-group">
+                         <input id="waktu" type="time" required>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <select id="bayar" required>
+                        <option value="" disabled selected>Pilih Metode Pembayaran</option>
+                        <option value="Transfer Bank - BRI">Transfer Bank - BRI</option>
+                        <option value="Transfer Bank - BNI">Transfer Bank - BNI</option>
+                        <option value="Transfer Bank - BCA">Transfer Bank - BCA</option>
+                        <option value="E-Wallet - DANA">E-Wallet - DANA</option>
+                        <option value="E-Wallet - OVO">E-Wallet - OVO</option>
+                        <option value="E-Wallet - GoPay">E-Wallet - GoPay</option>
+                        <option value="Tunai saat Antar">Tunai saat Antar</option>
+                    </select>
+                </div>
 
-<script>
-function sendWhatsApp() {
-    const phoneNumber = "6285267268257"; 
+                <button type="submit">Kirim Pesanan</button>
+            </form>
+        </div>
+    </section>
 
-    let nama = document.getElementById("nama").value;
-    let telepon = document.getElementById("telepon").value;
-    let alamat = document.getElementById("alamat").value;
-    let paket = document.getElementById("paket").value;
-    let berat = document.getElementById("berat").value;
-    let hargaPerKg = 0;
+    <footer id="kontak">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="https://wa.me/6285830233509" target="_blank"><i class="fab fa-whatsapp"></i> 0858 3023 3509</a>
+                </div>
+                <div>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> Jalan Seduduk Putih 1 Lorong Musholah Alkhilas</a>
+                </div>
+                <div>
+                    <a href="https://www.instagram.com/freshflod_laundry" target="_blank">
+                        <i class="fab fa-instagram"></i> freshflod_laundry
+                    </a>
+                </div>
+            </div>
+            <div class="copy">
+                &copy; 2025 FreshFold Laundry. All Rights Reserved
+            </div>
+        </div>
+    </footer>
 
-    if (paket.includes("Reguler")) hargaPerKg = 15000;
-    else if (paket.includes("Premium")) hargaPerKg = 20000;
-    else if (paket.includes("Express")) hargaPerKg = 30000;
+    <script>
+    function sendWA(){
+        // Ambil nilai dari input form
+        let nama = document.getElementById('nama').value;
+        let telp = document.getElementById('telp').value;
+        let alamat = document.getElementById('alamat').value;
+        let layanan = document.getElementById('layanan').value;
+        let paket = document.getElementById('paket').value;
+        let tanggal = document.getElementById('tanggal').value;
+        let waktu = document.getElementById('waktu').value;
+        let bayar = document.getElementById('bayar').value; 
+        
+        // Format Pesan WhatsApp
+        let pesan = 
+`Pemesanan Laundry Baru (FreshFold)
 
-    let totalHarga = (berat * hargaPerKg).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+Nama: ${nama}
+Telp: ${telp}
+Alamat Jemput: ${alamat}
 
-    if(nama=="" || telepon=="" || alamat=="" || berat=="" || berat <= 0){
-        alert("⚠ Mohon isi data dengan benar.");
-        return;
+Layanan: ${layanan}
+Paket: ${paket}
+Metode Pembayaran: ${bayar}
+
+Waktu Jemput: ${tanggal} jam ${waktu}
+
+Mohon konfirmasi pesanan saya. Terima kasih.`;
+
+        // Buka WhatsApp dengan pesan terformat (NOMOR BARU: 085830233509)
+        window.open(
+            "https://wa.me/6285830233509?text=" + encodeURIComponent(pesan), "_blank"
+        );
     }
-
-    let message = 
-`🧺 *PESANAN BARU FRESH FOLD LAUNDRY* 🧺
-
-👤 Nama: ${nama}
-📞 Telepon: ${telepon}
-📍 Alamat: ${alamat}
-
-🧾 Paket: ${paket}
-⚖ Berat Estimasi: ${berat} kg
-💰 Total Estimasi: ${totalHarga}
-
-Terima kasih telah order 🙏`;
-
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-}
-</script>
-
+    </script>
 </body>
 </html>
-
-
