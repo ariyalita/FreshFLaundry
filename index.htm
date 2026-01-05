@@ -4,353 +4,282 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreshFold Laundry - Laundry Online Cepat & Praktis</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
-        /* BASE & RESET */
-        * {
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            background: #f4f7fb;
-            color: #333;
-            line-height: 1.6;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* --- DASAR & RESET --- */
+        * { 
+            box-sizing: border-box; 
+            font-family: 'Arial', sans-serif; 
+            margin: 0; 
+            padding: 0; 
         }
 
-        /* 1. NAVBAR */
-        nav {
-            background: #fff;
-            padding: 15px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 0 20px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 22px;
-            font-weight: bold;
-            color: #1e88e5;
-        }
-        .logo img {
-            height: 35px; /* Ukuran Logo */
-            margin-right: 8px;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-        nav ul li a {
-            color: #333;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #1e88e5;
-        }
-        .nav-btn {
-            background: #2ecc71;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .nav-btn:hover {
-            background: #27ae60;
+        body { 
+            background: #f4f7fb; 
+            color: #333; 
+            line-height: 1.8; /* Memberikan jarak antar baris teks */
         }
 
-        /* 2. HERO SECTION (TAMPILAN GAMBAR + TEKS KIRI) */
-        .hero {
-            background: linear-gradient(120deg, #1e88e5, #42a5f5);
-            color: #fff;
-            padding: 70px 0;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            height: 480px; 
-        }
+        html { scroll-behavior: smooth; }
         
-        .hero-content {
-            max-width: 50%; 
-            z-index: 2;
-            padding-left: 20px; 
-            text-align: left; 
+        a { text-decoration: none; color: inherit; }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 25px; 
         }
-        .hero h1 {
-            font-size: 44px;
-            margin-bottom: 10px;
+
+
+        /* --- NAVIGASI --- */
+        nav { 
+            background: #ffffff; 
+            padding: 20px 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
         }
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 25px;
+
+        .nav-content { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            width: 100%; 
+        }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            font-size: 24px; 
+            font-weight: bold; 
+            color: #1e88e5; 
+        }
+
+        .logo img { height: 40px; margin-right: 12px; }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 30px; 
+        }
+
+        nav ul li a { 
+            color: #444; 
+            font-weight: 600; 
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover { color: #1e88e5; }
+
+        .nav-btn { 
+            background: #2ecc71; 
+            color: #fff; 
+            padding: 12px 25px; 
+            border-radius: 8px; 
+            font-weight: bold; 
+        }
+
+
+        /* --- HERO SECTION --- */
+        .hero { 
+            background: linear-gradient(135deg, #1e88e5, #42a5f5); 
+            color: #fff; 
+            padding: 100px 0; 
+            display: flex; 
+            align-items: center; 
+            position: relative; 
+            overflow: hidden; 
+            height: 500px; 
+        }
+
+        .hero-content { 
+            max-width: 550px; 
+            z-index: 2; 
+        }
+
+        .hero h1 { 
+            font-size: 45px; 
+            margin-bottom: 20px; 
+            line-height: 1.2;
+        }
+
+        .hero p { 
+            font-size: 18px; 
+            margin-bottom: 30px; 
             opacity: 0.9;
         }
-        
-        .hero-img {
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: 65%; 
-            overflow: hidden;
-            z-index: 1;
+
+        .hero-img { 
+            position: absolute; 
+            right: 0; 
+            top: 0; 
+            height: 100%; 
+            width: 55%; 
+            z-index: 1; 
         }
-        .hero-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: right center; 
+
+        .hero-img img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
         }
-        .hero-usp {
-            display: flex;
-            gap: 25px;
-            margin-top: 30px;
-            font-weight: 500;
+
+
+        /* --- SEKSI LAYANAN --- */
+        section { padding: 80px 0; }
+
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 60px; 
         }
-        .hero-usp div {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        /* SECTION BASE */
-        section {
-            padding: 60px 0;
-        }
-        .section-title {
-            text-align: center;
+
+        .section-title h2 { 
+            font-size: 36px; 
+            color: #1e88e5; 
             margin-bottom: 10px;
         }
-        .section-title h2 {
-            font-size: 32px;
-            color: #1e88e5;
-            margin-bottom: 5px;
-        }
-        .section-title p {
-            color: #777;
-            margin-bottom: 40px;
+
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 40px; 
         }
 
-        /* 3. SERVICES (LAYANAN) */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .service-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 14px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-        .service-card img {
-            width: 80px; 
-            margin-bottom: 15px;
-        }
-        .service-card h3 {
-            color: #1e88e5;
-            margin-bottom: 8px;
-        }
-        .service-card p {
-            font-size: 14px;
-            color: #777;
+        .service-card { 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); 
+            text-align: center; 
+            transition: 0.3s;
         }
 
-        /* 4. PRICING (HARGA) */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            text-align: center;
+        .service-card:hover { transform: translateY(-10px); }
+
+        .service-card img { 
+            width: 130px; 
+            height: 130px; 
+            margin-bottom: 25px; 
+            object-fit: contain; 
         }
-        .price-box {
-            padding: 30px 20px;
-            border-radius: 14px;
-            color: #fff;
+
+
+        /* --- KOTAK HARGA --- */
+        .pricing-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            text-align: center; 
         }
-        .price-box h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
+
+        .price-box { 
+            padding: 40px 20px; 
+            border-radius: 20px; 
+            color: #fff; 
+            cursor: pointer; 
+            transition: 0.3s; 
         }
-        .price-box h1 {
-            font-size: 40px;
-            margin: 10px 0;
-            font-weight: 700;
-        }
-        .price-box small {
-            font-size: 18px;
-            font-weight: 400;
-            opacity: 0.8;
-        }
-        .price-box p {
-            font-size: 14px;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-        
+
+        .price-box:hover { opacity: 0.9; transform: scale(1.05); }
+
         .box-blue { background: #1e88e5; }
         .box-green { background: #2ecc71; }
         .box-orange { background: #f39c12; }
 
-        /* 5. ORDER FORM */
-        .order-form {
-            max-width: 550px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 14px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-        .form-row > div {
-            flex: 1;
-        }
-        .order-form button {
-            width: 100%;
-            padding: 14px;
-            background: #1e88e5;
-            border: none;
-            color: #fff;
-            font-size: 16px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .order-form button:hover {
-            background: #1565c0;
+
+        /* --- FORM PEMESANAN --- */
+        .order-form { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: #fff; 
+            padding: 50px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
         }
 
-        /* 6. FOOTER */
-        footer {
-            background: #0d47a1;
-            color: #fff;
-            padding: 35px 0 15px 0;
-        }
-        .footer-content {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 0 20px;
-        }
-        .footer-content div {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-        .footer-content a {
-            color: #fff;
-            transition: color 0.3s;
-        }
-        .footer-content a:hover {
-            color: #42a5f5;
-        }
-        .footer-content i {
-            font-size: 18px;
-        }
-        .copy {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 15px;
+        .form-group { margin-bottom: 25px; }
+
+        input, select { 
+            width: 100%; 
+            padding: 15px; 
+            border-radius: 10px; 
+            border: 1px solid #ddd; 
+            font-size: 16px; 
+            background: #f9f9f9;
         }
 
-        /* MEDIA QUERIES (Responsif) */
-        @media (max-width: 900px) {
-            .hero {
-                height: auto;
-            }
-            .hero-img {
-                position: static;
-                width: 100%;
-                height: auto;
-                margin-top: 30px;
-            }
-            .hero-img img {
-                max-height: 300px;
-            }
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-content {
-                max-width: 100%;
-                padding-left: 0;
-            }
-            .hero-usp {
-                justify-content: center;
-            }
+
+        /* --- RIWAYAT --- */
+        .history-card { 
+            background: #fff; 
+            padding: 25px; 
+            border-radius: 15px; 
+            margin-top: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-left: 8px solid #2ecc71; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
         }
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-            .nav-content {
-                justify-content: space-around;
-            }
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-content div {
-                justify-content: center;
-            }
+
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #0d47a1; 
+            color: #fff; 
+            padding: 80px 0 40px; 
+            text-align: center; 
+        }
+
+        .footer-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 50px; 
+            margin: 30px 0; 
+        }
+
+        .footer-links a { 
+            font-size: 20px; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+
+        .address-text { 
+            font-size: 16px; 
+            line-height: 2; 
+            margin-top: 25px; 
+            opacity: 0.9;
+        }
+
+
+        /* --- MODAL DESIGN --- */
+        .modal-overlay { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.7); 
+            display: none; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 9999; 
+        }
+
+        .modal-box { 
+            background: #fff; 
+            padding: 40px; 
+            border-radius: 25px; 
+            width: 90%; 
+            max-width: 450px; 
+            text-align: center; 
         }
     </style>
 </head>
@@ -359,214 +288,245 @@
     <nav>
         <div class="nav-content container">
             <div class="logo">
-                <img src="fresh fold.png" alt="FreshFold Laundry Logo">
-                FreshFold Laundry
+                <img src="fresh fold.png" alt="Logo"> FreshFold Laundry
             </div>
             <ul>
                 <li><a href="#beranda">Beranda</a></li>
                 <li><a href="#layanan">Layanan</a></li>
                 <li><a href="#harga">Harga</a></li>
-                <li><a href="#kontak">Kontak</a></li>
+                <li><a href="#riwayat">Riwayat</a></li>
             </ul>
             <a href="#order" class="nav-btn">Pesan Sekarang</a>
         </div>
     </nav>
 
+
     <div class="hero" id="beranda">
         <div class="container hero-content">
-            <h1>Laundry Online Cepat & Praktis!</h1>
-            <p>Cucian bersih, wangi, dan cepat. Antar Jemput Gratis!</p>
-            <a href="#order" class="nav-btn">Pesan Sekarang</a>
-            
-            <div class="hero-usp">
-                <div><i class="fas fa-truck-moving"></i> Gratis Antar Jemput</div>
-                <div><i class="fas fa-clock"></i> Proses Cepat</div>
-                <div><i class="fas fa-hands-bubbles"></i> Garansi Kebersihan</div>
-            </div>
+            <h1>Laundry Online<br>Cepat & Praktis!</h1>
+            <p>Cucian bersih, wangi, dan cepat sampai. Kami jemput pakaian kotor Anda sekarang juga!</p>
+            <a href="#order" class="nav-btn" style="background:#f39c12">Mulai Sekarang</a>
         </div>
         <div class="hero-img">
-             <img src="mesin cuci.png" alt="Mesin Cuci Laundry"> 
+            <img src="mesin cuci.png" alt="Hero">
         </div>
     </div>
 
-    <section id="layanan">
-        <div class="container">
-            <div class="section-title">
-                <h2>Layanan Kami</h2>
-                <p>Jasa Laundry Terbaik untuk Anda</p>
-            </div>
-            <div class="services-grid">
-                
-                <div class="service-card">
-                    <img src="laundry kiloan.png" alt="Ikon Laundry Kiloan">
-                    <h3>Laundry Kiloan</h3>
-                    <p>Cuci setrika pakaian harian per kilogram.</p>
-                </div>
-                
-                <div class="service-card">
-                    <img src="laundry satuan.png" alt="Ikon Laundry Satuan">
-                    <h3>Laundry Satuan</h3>
-                    <p>Cuci per item untuk barang spesial (jas, gaun, boneka).</p>
-                </div>
 
-                <div class="service-card">
-                    <img src="laundry satuan.png" alt="Ikon Laundry Ekspres">
-                    <h3>Laundry Ekspres</h3>
-                    <p>Cucian selesai di hari yang sama, cocok untuk darurat.</p>
-                </div>
-                
+    <section id="layanan" class="container">
+        <div class="section-title">
+            <h2>Layanan Kami</h2>
+            <p>Pilih kategori laundry sesuai kebutuhan Anda</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="laundry kiloan.png" alt="Kiloan">
+                <h3>Laundry Kiloan</h3>
+                <p>Solusi hemat untuk pakaian harian Anda.</p>
+            </div>
+
+            <div class="service-card">
+                <img src="laundry satuan.png" alt="Satuan">
+                <h3>Laundry Satuan</h3>
+                <p>Perawatan eksklusif untuk jas, gaun, & sepatu.</p>
+            </div>
+
+            <div class="service-card">
+                <img src="landry ekspres.png" alt="Ekspres">
+                <h3>Laundry Ekspres</h3>
+                <p>Selesai dalam hitungan jam, langsung bersih!</p>
             </div>
         </div>
     </section>
 
-    <section id="harga">
-        <div class="container">
-            <div class="section-title">
-                <h2>Paket & Harga</h2>
-                <p>Pilih Paket Laundry Sesuai Kebutuhan Anda</p>
-            </div>
-            <div class="pricing-grid">
-                
-                <div class="price-box box-blue">
-                    <h3>Paket Express</h3>
-                    <h1>Rp 20.000<small>/kg</small></h1>
-                    <p>Cuci & Setrika 6-8 Jam</p>
-                </div>
-                
-                <div class="price-box box-green">
-                    <h3>Paket Reguler</h3>
-                    <h1>Rp 15.000<small>/kg</small></h1>
-                    <p>Cuci & Setrika 2 Hari</p>
-                </div>
 
-                <div class="price-box box-orange">
-                    <h3>Paket Satuan</h3>
-                    <h1>Rp 8.000<small>/Potong</small></h1>
-                    <p>Cuci Bersih per item</p>
-                </div>
-                
+    <section id="harga" class="container" style="background: #fff; border-radius: 30px;">
+        <div class="section-title">
+            <h2>Daftar Harga</h2>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="price-box box-blue" onclick="pilihPaket('15000')">
+                <h3>Paket Reguler</h3>
+                <h1>Rp 15.000</h1>
+                <p>Estimasi 2-3 Hari</p>
+            </div>
+
+            <div class="price-box box-green" onclick="pilihPaket('20000')">
+                <h3>Paket Ekspres</h3>
+                <h1>Rp 20.000</h1>
+                <p>Estimasi 6-12 Jam</p>
+            </div>
+
+            <div class="price-box box-orange" onclick="pilihPaket('8000')">
+                <h3>Paket Satuan</h3>
+                <h1>Rp 8.000</h1>
+                <p>Mulai dari / item</p>
             </div>
         </div>
     </section>
 
-    <section id="order">
-        <div class="container">
-            <div class="section-title">
-                <h2>Pesan Sekarang</h2>
-                <p>Order Laundry Anda Sekarang Juga</p>
+
+    <section id="order" class="container">
+        <div class="section-title">
+            <h2>Pesan Laundry</h2>
+        </div>
+
+        <div class="order-form">
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="inp-nama" placeholder="Masukkan nama Anda">
             </div>
 
-            <form class="order-form" onsubmit="sendWA();return false;">
-                <div class="form-group">
-                    <input id="nama" placeholder="Nama Lengkap" required>
-                </div>
-                <div class="form-group">
-                    <input id="telp" placeholder="Nomor Telepon (mis: 0858xxxx)" type="tel" required>
-                </div>
-                <div class="form-group">
-                    <input id="alamat" placeholder="Alamat Jemput Lengkap" required>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <select id="layanan" required>
-                            <option value="" disabled selected>Pilih Layanan</option>
-                            <option value="Laundry Kiloan">Laundry Kiloan</option>
-                            <option value="Laundry Satuan">Laundry Satuan</option>
-                            <option value="Laundry Ekspres">Laundry Ekspres</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select id="paket" required>
-                            <option value="" disabled selected>Pilih Paket</option>
-                            <option value="Paket Express (Rp 20.000/kg)">Paket Express (6-8 Jam)</option>
-                            <option value="Paket Reguler (Rp 15.000/kg)">Paket Reguler (2 Hari)</option>
-                            <option value="Paket Satuan (Rp 8.000/potong)">Paket Satuan (Harga/Potong)</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label>Alamat Penjemputan</label>
+                <input type="text" id="inp-alamat" placeholder="Alamat lengkap / No. Kost">
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <input id="tanggal" type="date" required>
-                    </div>
-                    <div class="form-group">
-                         <input id="waktu" type="time" required>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label>Pilih Paket</label>
+                <select id="inp-paket">
+                    <option value="15000">Paket Reguler (Rp 15.000)</option>
+                    <option value="20000">Paket Ekspres (Rp 20.000)</option>
+                    <option value="8000">Paket Satuan (Rp 8.000)</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <select id="bayar" required>
-                        <option value="" disabled selected>Pilih Metode Pembayaran</option>
-                        <option value="Transfer Bank - BRI">Transfer Bank - BRI</option>
-                        <option value="Transfer Bank - BNI">Transfer Bank - BNI</option>
-                        <option value="Transfer Bank - BCA">Transfer Bank - BCA</option>
-                        <option value="E-Wallet - DANA">E-Wallet - DANA</option>
-                        <option value="E-Wallet - OVO">E-Wallet - OVO</option>
-                        <option value="E-Wallet - GoPay">E-Wallet - GoPay</option>
-                        <option value="Tunai saat Antar">Tunai saat Antar</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label>Jumlah (Kg/Item)</label>
+                <input type="number" id="inp-qty" value="1" min="1">
+            </div>
 
-                <button type="submit">Kirim Pesanan</button>
-            </form>
+            <button onclick="bukaKonfirmasi()" style="width:100%; padding:18px; background:#1e88e5; color:white; border:none; border-radius:12px; font-weight:bold; cursor:pointer; font-size:16px;">
+                Kirim Pesanan
+            </button>
         </div>
     </section>
 
-    <footer id="kontak">
+
+    <section id="riwayat" class="container">
+        <div class="section-title">
+            <h2>Riwayat Transaksi</h2>
+        </div>
+        <div id="list-riwayat">
+            <p style="text-align:center; color:#999; font-style: italic;">Belum ada riwayat pesanan.</p>
+        </div>
+    </section>
+
+
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div>
-                    <a href="https://wa.me/6285830233509" target="_blank"><i class="fab fa-whatsapp"></i> 0858 3023 3509</a>
-                </div>
-                <div>
-                    <a href="#"><i class="fas fa-map-marker-alt"></i> Jalan Seduduk Putih 1 Lorong Musholah Alkhilas</a>
-                </div>
-                <div>
-                    <a href="https://www.instagram.com/freshflod_laundry" target="_blank">
-                        <i class="fab fa-instagram"></i> freshflod_laundry
-                    </a>
-                </div>
+            <h2>FreshFold Laundry</h2>
+            
+            <div class="footer-links">
+                <a href="https://wa.me/6285830233509" target="_blank">
+                    <i class="fab fa-whatsapp" style="color:#2ecc71"></i> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/freshflod_laundry" target="_blank">
+                    <i class="fab fa-instagram" style="color:#ff4081"></i> Instagram
+                </a>
             </div>
-            <div class="copy">
-                &copy; 2025 FreshFold Laundry. All Rights Reserved
+
+            <div class="address-text">
+                <i class="fas fa-map-marker-alt" style="color: #ff5252"></i> 
+                <strong>Alamat Workshop:</strong><br>
+                Jalan Seduduk Putih 1 Lorong Musholah Alkhilas,<br>
+                Kota Palembang, Sumatera Selatan.
             </div>
+
+            <p style="margin-top:50px; font-size:14px; opacity:0.6;">&copy; 2025 FreshFold Laundry - All Rights Reserved</p>
         </div>
     </footer>
 
+
+    <div class="modal-overlay" id="modal-bayar">
+        <div class="modal-box">
+            <h3 style="margin-bottom: 20px;">Konfirmasi Pesanan</h3>
+            <div id="bill-detail" style="text-align:left; background:#f0f7ff; padding:20px; border-radius:15px; margin-bottom:20px;"></div>
+            
+            <p style="margin-bottom: 10px; font-weight: bold;">Pilih Metode Pembayaran:</p>
+            <select id="inp-metode" style="margin-bottom:25px;">
+                <option value="Dana">Dana</option>
+                <option value="ShopeePay">ShopeePay</option>
+                <option value="Transfer BRI">Transfer BRI</option>
+            </select>
+            
+            <button onclick="prosesBayar()" style="width:100%; padding:15px; background:#2ecc71; color:white; border:none; border-radius:12px; font-weight:bold; cursor:pointer;">
+                Konfirmasi & Bayar
+            </button>
+        </div>
+    </div>
+
+
+    <div class="modal-overlay" id="modal-sukses">
+        <div class="modal-box">
+            <div style="width: 80px; height: 80px; background: #2ecc71; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px;">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 style="color:#2ecc71; margin-bottom: 10px;">Berhasil!</h2>
+            <p>Pesanan Anda telah kami terima.</p>
+            <button onclick="document.getElementById('modal-sukses').style.display='none'" style="margin-top:25px; padding:12px 30px; background:#1e88e5; color:white; border:none; border-radius:10px; cursor:pointer;">
+                Oke
+            </button>
+        </div>
+    </div>
+
+
     <script>
-    function sendWA(){
-        // Ambil nilai dari input form
-        let nama = document.getElementById('nama').value;
-        let telp = document.getElementById('telp').value;
-        let alamat = document.getElementById('alamat').value;
-        let layanan = document.getElementById('layanan').value;
-        let paket = document.getElementById('paket').value;
-        let tanggal = document.getElementById('tanggal').value;
-        let waktu = document.getElementById('waktu').value;
-        let bayar = document.getElementById('bayar').value; 
+        let curOrder = {};
+
+        function pilihPaket(h) { 
+            document.getElementById('inp-paket').value = h; 
+            document.getElementById('order').scrollIntoView(); 
+        }
         
-        // Format Pesan WhatsApp
-        let pesan = 
-`Pemesanan Laundry Baru (FreshFold)
+        function bukaKonfirmasi() {
+            const n = document.getElementById('inp-nama').value;
+            const a = document.getElementById('inp-alamat').value;
+            
+            if(!n || !a) return alert("Mohon lengkapi Nama dan Alamat!");
+            
+            const p = document.getElementById('inp-paket');
+            const q = document.getElementById('inp-qty').value;
+            const t = (parseInt(p.value) * q) * 1.02; // Tambahan biaya admin 2%
+            
+            curOrder = { 
+                pkt: p.options[p.selectedIndex].text, 
+                tot: t 
+            };
+            
+            document.getElementById('bill-detail').innerHTML = `
+                <p>Paket: <strong>${curOrder.pkt}</strong></p>
+                <p>Jumlah: <strong>${q} Unit</strong></p>
+                <hr style="margin: 10px 0; border: 0.5px solid #ccc;">
+                <p>Total (Inc. Admin 2%): <br><span style="font-size: 20px; color: #1e88e5;"><strong>Rp ${t.toLocaleString()}</strong></span></p>
+            `;
+            document.getElementById('modal-bayar').style.display = 'flex';
+        }
 
-Nama: ${nama}
-Telp: ${telp}
-Alamat Jemput: ${alamat}
-
-Layanan: ${layanan}
-Paket: ${paket}
-Metode Pembayaran: ${bayar}
-
-Waktu Jemput: ${tanggal} jam ${waktu}
-
-Mohon konfirmasi pesanan saya. Terima kasih.`;
-
-        // Buka WhatsApp dengan pesan terformat (NOMOR BARU: 085830233509)
-        window.open(
-            "https://wa.me/6285830233509?text=" + encodeURIComponent(pesan), "_blank"
-        );
-    }
+        function prosesBayar() {
+            const m = document.getElementById('inp-metode').value;
+            document.getElementById('modal-bayar').style.display = 'none';
+            document.getElementById('modal-sukses').style.display = 'flex';
+            
+            const list = document.getElementById('list-riwayat');
+            
+            if(list.innerHTML.includes("Belum ada")) list.innerHTML = "";
+            
+            list.innerHTML = `
+                <div class="history-card">
+                    <div>
+                        <strong style="font-size: 18px;">${curOrder.pkt}</strong><br>
+                        <small style="color: #666;">Metode: ${m} | Tanggal: ${new Date().toLocaleDateString()}</small>
+                    </div>
+                    <div style="text-align:right">
+                        <b style="color:#1e88e5; font-size: 18px;">Rp ${curOrder.tot.toLocaleString()}</b><br>
+                        <span style="background: #e8f5e9; color: #2ecc71; padding: 2px 10px; border-radius: 5px; font-size: 12px; font-weight: bold;">SUKSES</span>
+                    </div>
+                </div>
+            ` + list.innerHTML;
+        }
     </script>
 </body>
 </html>
