@@ -12,7 +12,6 @@
     /* NAVBAR */
     nav{background:#00acee;color:#fff;padding:15px 50px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
     .logo-area{display:flex;align-items:center;gap:10px}
-    /* Logo Box diperbarui untuk menampung gambar logo */
     .logo-img-nav {width: 40px; height: 40px; border-radius: 5px; object-fit: cover; background: white;}
     nav button{background:transparent;color:#fff;border:none;padding:8px 14px;cursor:pointer;font-weight:bold}
     .btn-logout{color:#ff4d4d !important}
@@ -31,7 +30,6 @@
     /* HOME STYLING */
     .hero-text{text-align:center;margin:40px 0}
     .hero-text h1{color:#00acee;font-size:32px}
-    /* Style tambahan untuk logo besar di halaman depan */
     .main-logo {width: 120px; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
     
     .visi-misi-section{display:flex;align-items:center;gap:30px;margin:40px 0;background:white;padding:20px;border-radius:15px}
@@ -48,6 +46,19 @@
     .stars span.active{color:#ffc107}
 
     hr{border:0;border-top:1px solid #eee;margin:20px 0}
+
+    /* CSS NOTA NYATA (STRUK) */
+    #notaDigital {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px auto;
+        color: #000;
+        font-family: 'Courier New', Courier, monospace;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
 </style>
 </head>
 <body>
@@ -225,8 +236,23 @@
     <div class="card">
         <h3>Dashboard Admin</h3>
         <div id="nota" class="status">Menunggu data transaksi...</div>
+
+        <div id="notaDigital" class="hidden">
+            <center>
+                <h3 style="margin:0">FRESH FOLD</h3>
+                <p style="font-size:10px">Laundry Antar Jemput<br>WA: 085840725688</p>
+                <p>-------------------------</p>
+            </center>
+            <div id="isiNotaDigital" style="font-size:12px"></div>
+            <center>
+                <p>-------------------------</p>
+                <p style="font-size:10px">SIMPAN NOTA INI SEBAGAI<br>BUKTI TRANSAKSI SAH</p>
+            </center>
+        </div>
+
         <button class="submit" style="background:#28a745" onclick="verifikasi()">✅ Verifikasi Pembayaran</button>
         <button class="submit" style="background:#25d366" onclick="kirimWA()">📱 Kirim Rincian ke WhatsApp Admin</button>
+        <button id="btnSave" class="submit hidden" style="background:#333" onclick="saveNota()">💾 Simpan Nota Nyata</button>
     </div>
 </div>
 
@@ -241,18 +267,13 @@
     function loginAction(){
         let role = document.getElementById('role').value;
         let pass = document.getElementById('passInput').value;
-        
         if(!role) return alert("Pilih role akses!");
-        
-        // Cek Sandi jika role bukan customer
         if(role === 'admin' || role === 'karyawan'){
             if(pass !== '123'){
                 return alert("Kata sandi salah! Akses ditolak.");
             }
         }
-        
         show(role);
-        // Reset input sandi setelah masuk
         document.getElementById('passInput').value = "";
     }
 
@@ -286,51 +307,24 @@
         updateAllView();
     }
 
-    function siapAntar(){
-        if(!order) return;
-        order.status = "Selesai & Siap Antar";
-        updateAllView();
-        document.getElementById('areaTerima').classList.remove('hidden');
-        alert("Status: Siap Antar!");
-    }
-
-    function konfirmasiSelesai(){
-        order.status = "Diterima Pelanggan (Selesai)";
-        updateAllView();
-        document.getElementById('areaTerima').classList.add('hidden');
-        document.getElementById('areaRating').classList.remove('hidden');
-        alert("Terima kasih! Pesanan selesai.");
-    }
-
-    function setStar(n){
-        let stars = document.getElementById('starContainer').children;
-        for(let i=0; i<5; i++){
-            stars[i].classList.toggle('active', i < n);
-        }
-    }
-
     function updateBeratAsli(){
-        if(!order) return alert("Tidak ada pesanan aktif!");
+        if(!order) return alert("Tidak ada pesanan!");
         let beratReal = parseFloat(document.getElementById('kBeratUpdate').value);
-        if(!beratReal) return alert("Masukkan berat timbangan asli!");
+        if(!beratReal) return alert("Masukkan berat real!");
         order.berat = beratReal;
-        order.status = "Proses Cuci (Timbangan Terverifikasi)";
+        order.status = "Timbangan Terverifikasi";
         updateAllView();
-        alert("Berat diperbarui!");
-    }
-
-    function ubahStatus(s){
-        if(!order) return;
-        order.status = s;
-        updateAllView();
+        alert("Berat Update!");
     }
 
     function verifikasi(){
         if(!order) return;
         order.bayar = true;
-        order.status = "Sudah Dibayar & Diproses";
+        order.status = "LUNAS & Diproses";
         updateAllView();
-        alert("Pembayaran berhasil!");
+        document.getElementById('notaDigital').classList.remove('hidden');
+        document.getElementById('btnSave').classList.remove('hidden');
+        alert("Pembayaran Terverifikasi!");
     }
 
     function updateAllView(){
@@ -341,22 +335,46 @@
             <b>Nama:</b> ${order.nama}<br>
             <b>Status:</b> <span style="color:#00acee">${order.status}</span><br>
             <b>Layanan:</b> ${order.jenis} (${order.berat} Kg/Pcs)<br>
-            <b>Total:</b> Rp ${total}<br>
-            <b>Alamat:</b> ${order.alamat}
+            <b>Total:</b> Rp ${total}
         `;
         document.getElementById('statusCustomer').innerHTML = content;
         document.getElementById('statusCustomer').classList.remove('hidden');
         document.getElementById('infoKaryawan').innerHTML = content;
         document.getElementById('nota').innerHTML = content;
+
+        // ISI NOTA DIGITAL
+        document.getElementById('isiNotaDigital').innerHTML = `
+            ID: ${order.id}<br>
+            Nama: ${order.nama}<br>
+            Layanan: ${order.jenis}<br>
+            Berat: ${order.berat} Kg/Pcs<br>
+            Total: <b>Rp ${total}</b><br>
+            Status: <b>LUNAS</b>
+        `;
+    }
+
+    function saveNota() {
+        let printContents = document.getElementById('notaDigital').innerHTML;
+        let originalContents = document.body.innerHTML;
+        document.body.innerHTML = `<div style="width:300px;margin:20px auto;padding:20px;border:1px solid #000;font-family:monospace;">${printContents}</div>`;
+        window.print();
+        document.body.innerHTML = originalContents;
+        window.location.reload();
     }
 
     function kirimWA(){
         if(!order) return alert("Data kosong!");
         let adminNo = "6285830233509";
         let total = (order.hargaSatuan * order.berat).toLocaleString();
-        let msg = `*NOTA FRESH FOLD LAUNDRY*%0A--------------------------%0A*ID:* ${order.id}%0A*Nama:* ${order.nama}%0A*Alamat:* ${order.alamat}%0A*Layanan:* ${order.jenis}%0A*Berat:* ${order.berat} Kg/Pcs%0A*Total Tagihan:* Rp ${total}%0A*Status:* ${order.status}%0A--------------------------%0A_Mohon segera diproses sesuai alamat di atas._`;
+        let msg = `*NOTA FRESH FOLD*%0AID: ${order.id}%0ANama: ${order.nama}%0ALayanan: ${order.jenis}%0ABerat: ${order.berat} Kg%0ATotal: Rp ${total}%0AStatus: ${order.status}`;
         window.open(`https://wa.me/${adminNo}?text=${msg}`);
     }
+
+    // Fungsi tambahan UI
+    function ubahStatus(s){ if(order){ order.status = s; updateAllView(); } }
+    function siapAntar(){ if(order){ order.status = "Siap Antar"; updateAllView(); document.getElementById('areaTerima').classList.remove('hidden'); } }
+    function konfirmasiSelesai(){ order.status = "Diterima (Selesai)"; updateAllView(); document.getElementById('areaRating').classList.remove('hidden'); }
+    function setStar(n){ let stars = document.getElementById('starContainer').children; for(let i=0; i<5; i++){ stars[i].classList.toggle('active', i < n); } }
 </script>
 </body>
 </html>
