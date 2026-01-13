@@ -9,10 +9,11 @@
     *{box-sizing:border-box;font-family:Arial, sans-serif}
     body{margin:0;background:#f4f6f8}
     
-    /* NAVBAR (image_0fbeac.jpg & image_0fc1ed.png) */
+    /* NAVBAR */
     nav{background:#00acee;color:#fff;padding:15px 50px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
     .logo-area{display:flex;align-items:center;gap:10px}
-    .logo-box{background:white;padding:5px 8px;border-radius:5px;font-weight:bold;color:#00acee;font-size:12px;text-align:center}
+    /* Logo Box diperbarui untuk menampung gambar logo */
+    .logo-img-nav {width: 40px; height: 40px; border-radius: 5px; object-fit: cover; background: white;}
     nav button{background:transparent;color:#fff;border:none;padding:8px 14px;cursor:pointer;font-weight:bold}
     .btn-logout{color:#ff4d4d !important}
 
@@ -21,15 +22,18 @@
     .card{background:#fff;padding:25px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.1)}
     .hidden{display:none}
     
-    /* FORM STYLING (image_0f5150.png) */
+    /* FORM STYLING */
     label{margin-top:15px;display:block;font-weight:bold;color:#333}
     input,select,textarea{width:100%;padding:12px;margin-top:5px;border-radius:8px;border:1px solid #ccc;font-size:14px}
     button.submit{margin-top:15px;width:100%;padding:12px;background:#0d6efd;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:16px;font-weight:bold}
     .status{margin-top:15px;padding:15px;background:#e8f4ff;border-left:5px solid #00acee;border-radius:4px}
     
-    /* HOME STYLING (image_0fc1b3.jpg & image_0fc1ed.png) */
+    /* HOME STYLING */
     .hero-text{text-align:center;margin:40px 0}
     .hero-text h1{color:#00acee;font-size:32px}
+    /* Style tambahan untuk logo besar di halaman depan */
+    .main-logo {width: 120px; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
+    
     .visi-misi-section{display:flex;align-items:center;gap:30px;margin:40px 0;background:white;padding:20px;border-radius:15px}
     .visi-misi-img img{width:100%;max-width:400px;border-radius:20px}
     .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0}
@@ -39,7 +43,6 @@
     .price-card h2{color:#00acee;font-size:40px;margin:10px 0}
     .info-box{border:2px dashed #00acee;padding:20px;text-align:center;border-radius:15px;margin-top:20px;background:#fff}
     
-    /* STYLE RATING */
     .rating-area{text-align:center;margin-top:20px;padding:15px;border:2px dashed #28a745;border-radius:10px}
     .stars{font-size:30px;cursor:pointer;color:#ddd}
     .stars span.active{color:#ffc107}
@@ -51,7 +54,7 @@
 
 <nav>
     <div class="logo-area">
-        <div class="logo-box">FRESH<br>FOLD</div>
+        <img src="fresh fold.png" alt="Logo" class="logo-img-nav">
         <h2 style="margin:0;letter-spacing:1px">FRESH FOLD</h2>
     </div>
     <div>
@@ -64,6 +67,7 @@
 
 <div class="container" id="home">
     <div class="hero-text">
+        <img src="Logo Fresh Fold.jpeg" alt="Fresh Fold Logo" class="main-logo">
         <h1>Berlangganan Laundry Antar Jemput <br> Bersih, Wangi, & Tanpa Ribet</h1>
         <p>Solusi terbaik untuk Anda yang sibuk. Kami jemput pakaian kotor Anda dan kami antar kembali dalam keadaan bersih, rapi, dan harum semerbak.</p>
         <center><button class="submit" style="width:auto;padding:12px 50px;background:#00acee" onclick="show('login')">PESAN SEKARANG YUK!</button></center>
@@ -119,7 +123,6 @@
 
     <div class="info-box">
         <b>Fresh Fold Laundry Antar Jemput</b><br>
-        Minimal order untuk gratis ongkir: 5 Pcs / 5 Kg<br>
         Jam Operasional: 08.00 - 21.00 WIB
     </div>
 </div>
@@ -130,10 +133,14 @@
         <label>Pilih Akses</label>
         <select id="role">
             <option value="">-- Pilih Role --</option>
-            <option value="customer">Customer (Pesan)</option>
-            <option value="karyawan">Karyawan (Proses)</option>
-            <option value="admin">Admin (Verifikasi)</option>
+            <option value="customer">Customer</option>
+            <option value="karyawan">Karyawan</option>
+            <option value="admin">Admin</option>
         </select>
+        <div id="passArea">
+            <label>Kata Sandi (Khusus Staf)</label>
+            <input type="password" id="passInput" placeholder="Masukkan sandi">
+        </div>
         <button class="submit" onclick="loginAction()">Masuk ke Dashboard</button>
     </div>
 </div>
@@ -233,8 +240,20 @@
 
     function loginAction(){
         let role = document.getElementById('role').value;
+        let pass = document.getElementById('passInput').value;
+        
         if(!role) return alert("Pilih role akses!");
+        
+        // Cek Sandi jika role bukan customer
+        if(role === 'admin' || role === 'karyawan'){
+            if(pass !== '123'){
+                return alert("Kata sandi salah! Akses ditolak.");
+            }
+        }
+        
         show(role);
+        // Reset input sandi setelah masuk
+        document.getElementById('passInput').value = "";
     }
 
     function hitungHarga(){
